@@ -2,6 +2,9 @@ package lesson1;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 /*
 	Полностью разобраться с кодом
@@ -17,7 +20,8 @@ public class MainCircles extends JFrame {
     private static final int POS_Y = 200;
     private static final int WINDOW_WIDTH = 800;
     private static final int WINDOW_HEIGHT = 600;
-    private Sprite[] sprites = new Sprite[10];
+    private Sprite[] sprites;
+
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
@@ -37,11 +41,35 @@ public class MainCircles extends JFrame {
         initApplication();
         add(gameCanvas, BorderLayout.CENTER);
         setVisible(true);
+        gameCanvas.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                //gameCanvas.setBackground(Color.black);
+                initApplication();
+
+                add(gameCanvas, BorderLayout.CENTER);
+                setVisible(true);
+            }
+        });
     }
 
     void initApplication() {
-        for (int i = 0; i < sprites.length; i++) {
-            sprites[i] = new Ball();
+
+        if (sprites != null){
+            Sprite[] sprites1 = new Sprite[10 + sprites.length];
+            for (int i = 0; i < sprites1.length; i++) {
+                if(i < sprites.length)
+                    sprites1[i] = sprites[i];
+                else
+                    sprites1[i] = new Ball();
+            }
+            sprites = sprites1;
+        }else {
+            sprites = new Sprite[10];
+            for (int i = 0; i < sprites.length; i++) {
+                sprites[i] = new Ball();
+            }
         }
     }
 
