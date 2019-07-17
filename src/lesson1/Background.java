@@ -15,6 +15,11 @@ public class Background extends GameCanvas{
       //  }
     }
     public void backG(){
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         Color color1 = new Color(rand.nextInt(255),rand.nextInt(255),rand.nextInt(255));
         gameCanvas.setBackground(color1);
     }
