@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Random;
 
 /*
 	Полностью разобраться с кодом
@@ -41,6 +42,8 @@ public class MainCircles extends JFrame {
         initApplication();
         add(gameCanvas, BorderLayout.CENTER);
         setVisible(true);
+
+
         gameCanvas.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -52,6 +55,9 @@ public class MainCircles extends JFrame {
                 setVisible(true);
             }
         });
+
+        //Background background = new Background(gameCanvas);
+
     }
 
     void initApplication() {
@@ -82,7 +88,9 @@ public class MainCircles extends JFrame {
         for (int i = 0; i < sprites.length; i++) {
             sprites[i].update(canvas, deltaTime);
         }
+
     }
+
 
     private void render(GameCanvas canvas, Graphics g) {
         for (int i = 0; i < sprites.length; i++) {
