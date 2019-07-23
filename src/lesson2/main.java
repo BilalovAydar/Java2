@@ -3,12 +3,14 @@ package lesson2;
 public class main {
     public static void main(String[] args) {
         String str="1 3 1 2\n2 3 2 2\n5 6 7 1\n3 3 1 0";
-        int[][] arr = new int[4][4];
+        //int[][] arr = new int[4][4];
 
         try {
-            arr = methodStrToArr(str);
+            //arr = methodStrToArr(str);
+            System.out.println(methodStrToArr(str));
+            System.out.println();
         }
-        catch (NumberFormatException e){
+        catch (NelegalFormatSootvetstviye e){
             System.out.println(e.getMessage());
             System.out.println("1");
         }
@@ -17,20 +19,22 @@ public class main {
             System.out.println("2");
         }
         System.out.println();
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[0].length; j++) {
-                System.out.print(arr[i][j] + " ");
-            }
-            System.out.println();
-        }
+//        for (int i = 0; i < arr.length; i++) {
+//            for (int j = 0; j < arr[0].length; j++) {
+//                System.out.print(arr[i][j] + " ");
+//            }
+//            System.out.println();
+//        }
     }
 
-    private static int[][] methodStrToArr(String str) {
-        int l = 1, n = 0;
+    //private static int[][] methodStrToArr(String str) {
+    private static int methodStrToArr(String str) {
+        int l = 1, n = 0, sum = 0;
         for (int i = 0; i < str.length(); i++) {
             if (str.charAt(i) == '\n') l++;
             else if (!((str.charAt(i)>='0' && str.charAt(i)<='9') || str.charAt(i) == ' ')){
-                throw new NumberFormatException("Odin");
+                throw new NelegalFormatSootvetstviye("Odin");
+
             }
         }
         if (l > 4) throw new IndexOutOfBoundsException("Dva");
@@ -52,9 +56,11 @@ public class main {
         int[][] arr = new int[strArr.length][strArr[0].length];
         for (int i = 0; i < strArr.length; i++) {
             for (int j = 0; j < strArr[i].length; j++) {
-                arr[i][j] = Integer.parseInt(strArr[i][j]);
+                //arr[i][j] = Integer.parseInt(strArr[i][j]);
+                sum = sum + Integer.parseInt(strArr[i][j]);
             }
         }
-        return arr;
+        //return arr;
+        return sum / 2;
     }
 }
