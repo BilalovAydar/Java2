@@ -4,6 +4,8 @@ public class main {
     public static void main(String[] args) {
         String[] strArr = {"яблоко","груша","апельсин","мандарин","вишня","черешня","яблоко","вишня","малина","арбуз","арбуз","черника","крыжовник","смородина","земляника","грейпфрут"};
         returnWithout(strArr);
+        //Window window = new Window();
+        View view = new View();
 
     }
 
