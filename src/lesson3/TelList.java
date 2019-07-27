@@ -7,7 +7,8 @@ public class TelList {
     public TelList(){
         arrayList = new ArrayList<>();
     }
-    public void add(Record record){
+    public void add(String surname, String tel){
+        Record record = new Record(surname, tel);
         arrayList.add(record);
     }
     public ArrayList<Record> get(String surname){

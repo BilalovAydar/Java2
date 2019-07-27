@@ -13,6 +13,5 @@ public class View extends JFrame {
         setBounds(POS_X, POS_Y, WINDOW_WIDTH, WINDOW_HEIGHT);
         setTitle("Telephones");
         setVisible(true);
-//
     }
 }
