@@ -14,8 +14,12 @@ public class GameCanvas extends JPanel {
         lastFrameTime = System.nanoTime();
     }
 
+    public GameCanvas() {
+    }
+
     @Override
     protected void paintComponent(Graphics g) {
+        Background background = new Background(this);
         super.paintComponent(g);
         long currentTime = System.nanoTime();
         float delta = (currentTime - lastFrameTime) * 0.000000001f;
@@ -25,7 +29,10 @@ public class GameCanvas extends JPanel {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+        background.backG();
         gameWindow.onDrawFrame(this, g, delta);
+
+
         repaint();
     }
 
